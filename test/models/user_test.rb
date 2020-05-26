@@ -8,6 +8,7 @@ describe User do
   describe 'validations' do
     before do
       @user = User.new(username: "testuser")
+      @invalid_user = User.new(username: "testuser")
     end
 
     it 'is valid when all fields are present' do
@@ -25,4 +26,22 @@ describe User do
       expect(@user.errors.messages).must_include :username
     end
   end
+
+  # describe 'relations' do
+  #   before do
+  #     @user = User.new(username: "test user")
+
+  #     5.times do |i|
+  #       Vote.new(user_id: @user.id, work_id: i)
+  #     end
+  #   end
+
+  #   it 'can get a list of all votes belonging to a user' do
+
+  #     votes = @user.votes
+
+  #     expect((votes).nil?).must_equal false
+  #     expect(votes.length).must_equal 5
+  #   end
+  # end
 end

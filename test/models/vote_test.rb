@@ -7,7 +7,7 @@ describe Vote do
 
   describe 'validations' do
     before do
-      @vote = Vote.new(user_id: 11111, work_id: 11111)
+      @vote = Vote.new(user_id: 1, work_id: 1)
     end
 
     it 'is valid when all fields are present' do
@@ -32,6 +32,26 @@ describe Vote do
 
       expect(result).must_equal false
       expect(@vote.errors.messages).must_include :work_id
+    end
+  end
+
+  describe 'relations' do
+    it 'can set the user through "user"' do
+      user = User.create!(username: "test user")
+      vote = Vote.new(work_id: 1111)
+
+      vote.user = user
+
+      expect(vote.user_id).must_equal user.id
+    end
+
+    it 'can set the user through "user_id"' do
+      user = User.create!(username: "test user")
+      vote = Vote.new(work_id: 1111)
+
+      vote.user_id = user.id
+
+      expect(vote.user_id).must_equal user.id
     end
   end
 end

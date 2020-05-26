@@ -60,4 +60,28 @@ describe Work do
       expect(result).must_equal true
     end
   end
+
+  describe 'work model methods' do
+
+    before do
+      
+    end
+
+    describe 'spotlight' do
+
+    end
+
+    describe 'top ten' do
+
+    end
+
+    describe 'upvoted' do
+
+    end
+
+    describe 'sort by category' do
+
+    end
+
+  end
 end
