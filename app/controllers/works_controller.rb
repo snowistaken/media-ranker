@@ -1,8 +1,8 @@
 class WorksController < ApplicationController
   def index
-    @books = Work.where(category: "book")
-    @movies = Work.where(category: "movie")
-    @albums = Work.where(category: "album")
+    @books = Work.sort_by_category("book")
+    @movies = Work.sort_by_category("movie")
+    @albums = Work.sort_by_category("album")
   end
 
   def show
@@ -73,10 +73,13 @@ class WorksController < ApplicationController
     if @current_user.nil?
       # redirect_to work_path(@work.id)
       flash[:error] = "You must be logged in to do that!"
+    elsif Work.upvoted?(@current_user.id, @work.id)
+      flash[:error] = "You have already voted for this work!"
     else
-      Vote.new(@current_user, @work)
+      Vote.create(user_id: @current_user.id, work_id: @work.id)
       redirect_to work_path(@work.id)
     end
+
   end
 
   private

@@ -34,4 +34,8 @@ class UsersController < ApplicationController
     session[:user_id] = nil
     redirect_to root_path
   end
+
+  def index
+    @users = User.all
+  end
 end
