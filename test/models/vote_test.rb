@@ -7,21 +7,31 @@ describe Vote do
 
   describe 'validations' do
     before do
-      @user = User.new(username: "testuser")
+      @vote = Vote.new(user_id: 11111, work_id: 11111)
     end
 
     it 'is valid when all fields are present' do
-      result = @user.valid?
+      result = @vote.valid?
 
       expect(result).must_equal true
     end
 
-    it 'is invalid without a username' do
-      @user.username = nil
+    it 'is invalid without a user id' do
+      @vote.user_id = nil
 
-      result = @user.valid?
+      result = @vote.valid?
 
       expect(result).must_equal false
+      expect(@vote.errors.messages).must_include :user_id
+    end
+
+    it 'is invalid without a work id' do
+      @vote.work_id = nil
+
+      result = @vote.valid?
+
+      expect(result).must_equal false
+      expect(@vote.errors.messages).must_include :work_id
     end
   end
 end

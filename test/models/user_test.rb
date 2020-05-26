@@ -22,6 +22,7 @@ describe User do
       result = @user.valid?
 
       expect(result).must_equal false
+      expect(@user.errors.messages).must_include :username
     end
   end
 end
