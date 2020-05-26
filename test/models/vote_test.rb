@@ -10,6 +10,8 @@ describe Vote do
       @vote = Vote.new(user_id: 1, work_id: 1)
     end
 
+
+    # This test was passing until I changed my vote model from has_one work and user to belongs_to work and user.
     it 'is valid when all fields are present' do
       result = @vote.valid?
 

@@ -63,25 +63,42 @@ describe Work do
 
   describe 'work model methods' do
 
-    before do
-      
-    end
+    # ! Want to implement fixture files here !
+    # Will update PR later this evening.
 
-    describe 'spotlight' do
+    # before do
 
-    end
+    # end
 
-    describe 'top ten' do
+    # describe 'spotlight' do
+    #   it 'will find the most upvoted work' do
+    #     spotlight = Work.spotlight
 
-    end
+    #     expect(spotlight.id).must_equal 1
+    #   end
+    # end
 
-    describe 'upvoted' do
+  #   describe 'top ten' do
+  #     it 'will find up to the top ten works out of a given category' do
 
-    end
+  #     end
+  #   end
 
-    describe 'sort by category' do
+  #   describe 'upvoted' do
+  #     it 'will determine if the current user has already voted on this work' do
 
-    end
+  #     end
+
+  #     it 'will return false if the current user has not voted on the work' do
+
+  #     end
+  #   end
+
+  #   describe 'sort by category' do
+  #     it 'will sort all works in a given category by vote' do
+
+  #     end
+  #   end
 
   end
 end
