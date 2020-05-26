@@ -1,0 +1,8 @@
+<%= form_with model: @user, class: 'login__form', url: login_path do |f| %>
+  <div class="form-group">
+    <%= f.label :username %>
+    <%= f.text_field :username %>
+  </div>
+
+  <%= f.submit "Log In" %>
+<% end %>

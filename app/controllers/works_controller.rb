@@ -1,15 +1,12 @@
 class WorksController < ApplicationController
   def index
-    @works = Work.all
-
     @books = Work.where(category: "book")
     @movies = Work.where(category: "movie")
     @albums = Work.where(category: "album")
   end
 
   def show
-    work_id = params[:id].to_i
-    @work = Work.find_by(id: work_id)
+    @work = Work.find_by(id: params[:id])
 
     if @work.nil?
       head :not_found
@@ -66,6 +63,19 @@ class WorksController < ApplicationController
     else
       render :new
       return
+    end
+  end
+
+  def upvote
+    @current_user = User.find_by(id: session[:user_id])
+    @work = Work.find_by(id: params[:id])
+
+    if @current_user.nil?
+      # redirect_to work_path(@work.id)
+      flash[:error] = "You must be logged in to do that!"
+    else
+      Vote.new(@current_user, @work)
+      redirect_to work_path(@work.id)
     end
   end
 
